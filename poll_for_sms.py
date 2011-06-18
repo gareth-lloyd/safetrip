@@ -8,6 +8,9 @@ setup_environ(settings)
 from safeweb.forms import process_secret
 from safeweb.models import Traveller, STATUS_SAFE, STATUS_IN_DANGER
 
+if len(sys.argv) < 3:
+    print "Usage eg: python poll_for_sms.py GB 445480605"
+
 country_code = sys.argv[1]
 short_code = sys.argv[2]
 

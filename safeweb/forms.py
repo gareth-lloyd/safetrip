@@ -13,7 +13,7 @@ MIN_SCRT_LENGTH = 10
 class TravellerForm(forms.ModelForm):
     class Meta:
         model = Traveller
-        exclude = ['status']
+        exclude = ['status', 'help_country', 'help_message']
 
     def clean_secret(self):
         secret = self.cleaned_data['secret']
