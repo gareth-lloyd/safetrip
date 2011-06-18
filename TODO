@@ -1,6 +1,12 @@
+- front page
 - reg form (web)
 - confirmation page with details (web)
-- 
+- create web endpoints for SAFE/HELP
+- poll bluevia API for received text mesages
+- parse received text messages for HELP/SAFE verb, password, and messages
+- admin interface for seeing people in trouble
+- script to perform actions for a person in trouble
+    - forward details to relevant people
 
 
 nice to have
