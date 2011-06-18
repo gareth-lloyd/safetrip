@@ -18,7 +18,7 @@ STATUSES = (
 class Traveller(models.Model):
     name = models.CharField(max_length=120)
     secret = models.CharField(max_length=120, unique=True)
-    email = models.EmailField(blank=True)
+    email = models.EmailField(blank=True, unique=True)
 
     photo = models.FileField(upload_to='user_photos', blank=True)
     home_contact_email = models.EmailField(blank=True)

@@ -3,11 +3,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
-from forms import TravellerForm
-
-def process_secret(raw_secret):
-    #TODO do this properly
-    return raw_secret
+from forms import TravellerForm, process_secret
 
 def register(request):
     if request.method == "POST":
