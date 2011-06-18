@@ -1,0 +1,4 @@
+*.pyc
+*.kpf
+local_settings.py
+*.swp
