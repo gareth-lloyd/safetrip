@@ -4,8 +4,8 @@ import apihelper
 
 POLL_WAIT=1
 
-def get_received_sms():
-    sms_json = apihelper.get_sms_json()
+def get_received_sms(short_code):
+    sms_json = apihelper.get_sms_json(short_code)
 
     if len(sms_json) == 0:
         print "No SMS messages found"
@@ -18,10 +18,10 @@ def get_received_sms():
     return sms_object['receivedSMS']['receivedSMS']
     
 
-def start_polling(message_handler):
+def start_polling(short_code, message_handler):
 
     while True:
-        sms_s = get_received_sms()
+        sms_s = get_received_sms(short_code)
         for sms in sms_s:
             message_handler(sms)
 
