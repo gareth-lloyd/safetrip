@@ -1,3 +1,4 @@
+DONE
 - reg form (web)
     - coming from
     - going to
@@ -5,13 +6,18 @@
     - photo
     - home country phone
     - leaving
-    - arriving
-
+    - arriving (calculated - hints to user)
 - confirmation page with details (web)
-- create web endpoints for SAFE/HELP
 - poll bluevia API for received text mesages
 - parse received text messages for HELP/SAFE verb, password, and messages
+
+DOING
+- different short codes for different countries
+- process secret before storing
 - admin interface for seeing people in trouble
+
+TODO
+- create web endpoints for SAFE/HELP
 - script to perform actions for a person in trouble
     - forward details to relevant people
 - reply to HELP txt with as much information as possible of use in location

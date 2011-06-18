@@ -5,7 +5,7 @@ import blueviamonitor.monitor as monitor
 
 setup_environ(settings)
 
-from safeweb.views import process_secret
+from safeweb.forms import process_secret
 from safeweb.models import Traveller, STATUS_SAFE, STATUS_IN_DANGER
 
 country_code = sys.argv[1]
