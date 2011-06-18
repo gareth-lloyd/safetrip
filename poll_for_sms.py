@@ -11,11 +11,11 @@ def update_traveller_status_for_secret(status, secret):
     processed_secret = process_secret(secret)
     try:
         traveller = Traveller.objects.get(secret=secret)
+        traveller.status = status
+        traveller.save()
     except Traveller.DoesNotExist:
         # do stuff
         pass
-    traveller.status = status
-    traveller.save()
 
 def handle_sms(sms):
     message_split = sms['message'].split()
@@ -30,8 +30,10 @@ def handle_sms(sms):
             secret = message_split[1]
             update_traveller_status_for_secret(STATUS_SAFE, secret)
             print "User with secret " + secret + " is safe"
-        
     else:
         print "invalid message " + message
+
+    print sms['originAddress']['phoneNumber']
+    print sms['destinationAddress']['phoneNumber']
 
 monitor.start_polling(handle_sms)
