@@ -3,7 +3,10 @@
     - going to
     - family details
     - photo
-    - 
+    - home country phone
+    - leaving
+    - arriving
+
 - confirmation page with details (web)
 - create web endpoints for SAFE/HELP
 - poll bluevia API for received text mesages
