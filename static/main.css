@@ -64,7 +64,7 @@ body {background:#f7f7f7 none repeat scroll 0 0; color:#282828; font-family:'Hel
 #banner_wrap {
     height:auto;
     position:relative;
-    height:350px;
+    height:300px;
     overflow: visible;
     border-bottom:1px solid #333333;
 }
@@ -78,18 +78,18 @@ body {background:#f7f7f7 none repeat scroll 0 0; color:#282828; font-family:'Hel
 }
 .ad_banneroverlay {
     margin:0 auto 0 auto;
-    top:160px;
+    top:80px;
     position:relative;
-    width:900px;
+    width:650px;
     height:auto;
 }
 #ad_banner_content {
-    height:350px;
+    height:300px;
     overflow:hidden
 }
 #ad_banner_content .ad_bannerwrap {
     position: absolute;
-    height:350px;
+    height:300px;
     width:100%;
     background-position:top center;
 }
@@ -140,12 +140,11 @@ body {background:#f7f7f7 none repeat scroll 0 0; color:#282828; font-family:'Hel
 }
 .banner_text {
     padding:20px;
-    /*background: transparent url(../masterImages/banner_content_bg.png) repeat top left;*/
-    background-color:#000;
-    opacity:0.6;
+    -moz-border-radius:15px; -webkit-border-radius:15px; border-radius:15px;
+    background-color:#eb008b;
     text-align:right;
     float:right;
-    min-width: 400px;
+    min-width: 300px;
     
 }
 .banner_text h2 {
@@ -164,7 +163,7 @@ body {background:#f7f7f7 none repeat scroll 0 0; color:#282828; font-family:'Hel
 /* features */
 
 #features {
-margin: 20px auto;
+margin: 40px auto;
 width:790px;
 overflow: hidden;
 }
