@@ -9,21 +9,24 @@ STATUSES = (
     (1, 'In Danger'),
     (2, 'Safe'),
 )
-class UserProfile(models.Model):
-    user = models.OneToOneField(User)
 
-    photo = models.FileField(upload_to='user_photos')
-    home_contact_email = models.EmailField()
-    home_contact_mobile = models.CharField(max_length=20)
+class Traveller(models.Model):
+    name = models.CharField(max_length=120)
+    secret = models.CharField(max_length=120, unique=True)
+    email = models.EmailField(blank=True)
 
-    home_country = CountryField()
-    home_details = models.CharField(max_length=255)
+    photo = models.FileField(upload_to='user_photos', blank=True)
+    home_contact_email = models.EmailField(blank=True)
+    home_contact_mobile = models.CharField(max_length=20, blank=True)
+
+    home_country = CountryField(blank=True)
+    home_details = models.CharField(max_length=25, blank=True)
     destination_country = CountryField()
-    destination_details = models.CharField(max_length=255)
+    destination_details = models.CharField(max_length=25, blank=True)
 
     leaving = models.DateField()
     arriving = models.DateField()
 
-    notes = models.TextField()
+    notes = models.TextField(null=True, blank=True)
     status = models.PositiveSmallIntegerField(choices=STATUSES, 
         default=0)

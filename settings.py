@@ -142,6 +142,4 @@ LOGGING = {
     }
 }
 
-AUTH_PROFILE_MODULE = 'safeweb.UserProfile'
-
 from local_settings import *

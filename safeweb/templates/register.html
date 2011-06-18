@@ -9,7 +9,10 @@
         time. However, if you run into trouble...
     </div>
 
-    {{ user_form.as_p }}
-    {{ profile_form.as_p }}
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ traveller_form.as_p }}
+        <input type="submit" />
+    </form>
 </div>
 {% endblock %}

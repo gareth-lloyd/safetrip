@@ -1,13 +1,8 @@
 from django import forms
-from safeweb.models import UserProfile
-from django.contrib.auth.models import User
+from safeweb.models import Traveller
 
-class UserForm(forms.ModelForm):
+class TravellerForm(forms.ModelForm):
     class Meta:
-        model = User
-        fields = ["first_name", "last_name", "email", "password"]
-
-class UserProfileForm(forms.ModelForm):
-    class Meta:
-        model = UserProfile
+        model = Traveller
+        exclude = ['status']
 
