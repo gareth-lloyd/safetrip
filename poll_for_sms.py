@@ -14,19 +14,18 @@ short_code = sys.argv[2]
 def update_traveller_for_secret(status, secret, help_country=None, help_message=None):
     processed_secret = process_secret(secret)
     try:
-        traveller = Traveller.objects.get(secret=secret)
+        traveller = Traveller.objects.get(secret=processed_secret)
         traveller.status = status
 
         if help_country != None:
-            traveller_status = help_country
+            traveller.help_country = help_country
 
         if help_message != None:
-            traveller_status = help_message
+            traveller.help_message = help_message
 
         traveller.save()
     except Traveller.DoesNotExist:
-        # do stuff
-        pass
+        print "could not find traveller " + processed_secret
 
 def handle_sms(sms):
     message_split = sms['message'].split()
@@ -35,7 +34,12 @@ def handle_sms(sms):
         should_be_HELP_or_pass = message_split[1]
         if should_be_HELP_or_pass.lower() == "help":
             secret = message_split[2]
-            update_traveller_for_secret(STATUS_IN_DANGER, secret, help_country)
+
+            message = None
+            if len(message_split) >= 3:
+                message = ' '.join(message_split[3:])
+
+            update_traveller_for_secret(STATUS_IN_DANGER, secret, country_code, message)
             print "User with secret " + secret + " is in trouble"
         else:
             secret = message_split[1]

@@ -37,4 +37,4 @@ class Traveller(models.Model):
         default=0)
 
     help_country = CountryField(blank=True)
-    help_message = models.TextField()
+    help_message = models.TextField(blank=True)
