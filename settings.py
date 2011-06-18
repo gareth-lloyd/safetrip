@@ -1,6 +1,6 @@
 # Django settings for safetrip project.
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -21,6 +21,7 @@ DATABASES = {
         'PORT': '',
     }
 }
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -91,7 +92,6 @@ SECRET_KEY = 'modify in local_settings.py'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -141,3 +141,7 @@ LOGGING = {
         },
     }
 }
+
+AUTH_PROFILE_MODULE = 'safeweb.UserProfile'
+
+from local_settings import *

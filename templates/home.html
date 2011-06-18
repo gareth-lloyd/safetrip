@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="intro">
+    We want you to have a safe journey. 
+</div>
+<div id="register" class="big-button">
+    <a href="{% url register %}">Register for a SafeTrip</a>
+</div>
+<div id="update" class="big-button">
+    <a href="{% url update %}">Tell us how your trip is going</a>
+</div>
+{% endblock %}

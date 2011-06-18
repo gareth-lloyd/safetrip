@@ -1,22 +1,17 @@
 <html>
 <head>
   <link href="/media/main.css" rel="stylesheet">
+  {% block extrahead %}
+  {% endblock %}
 </head>
 <body>
   <div id="container">
     <div id="banner">
       <h1>SafeTrip</h1>
     </div>
-    <div id="intro">
-        We want you to have a safe journey. 
-    </div>
     <div id="content">
-        <div id="register" class="big-button">
-            <a href="{% url register %}">Register for a SafeTrip</a>
-        </div>
-        <div id="update" class="big-button">
-            <a href="{% url update %}">Tell us how your trip is going</a>
-        </div>
+    {% block content %}
+    {% endblock %}
     </div>
   </div>
 </body>

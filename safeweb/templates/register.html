@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="register_form">
+    <h3>Your Trip</h3>
+    <div id="about_registration">
+        <h4>What will you do with my details?</h4>
+        All information you enter is private, and you can delete it at any
+        time. However, if you run into trouble...
+    </div>
+
+    {{ form.as_p }}
+</div>
+{% endblock %}

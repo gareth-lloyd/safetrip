@@ -1,5 +1,9 @@
-- front page
 - reg form (web)
+    - coming from
+    - going to
+    - family details
+    - photo
+    - 
 - confirmation page with details (web)
 - create web endpoints for SAFE/HELP
 - poll bluevia API for received text mesages
@@ -7,6 +11,7 @@
 - admin interface for seeing people in trouble
 - script to perform actions for a person in trouble
     - forward details to relevant people
+- reply to HELP txt with as much information as possible of use in location
 
 
 nice to have
