@@ -10,14 +10,18 @@ DONE
 - confirmation page with details (web)
 - poll bluevia API for received text mesages
 - parse received text messages for HELP/SAFE verb, password, and messages
+- process secret before storing
 
 DOING
+- create web endpoints for SAFE/HELP
 - different short codes for different countries
-- process secret before storing
 - admin interface for seeing people in trouble
 
 TODO
-- create web endpoints for SAFE/HELP
+- create method for updating on progress
+    - multiple updates per person. create web interface and then ask Tom to duplicate with mobile
+- create local information class and fixture to populate
+- show short codes on website
 - script to perform actions for a person in trouble
     - forward details to relevant people
 - reply to HELP txt with as much information as possible of use in location

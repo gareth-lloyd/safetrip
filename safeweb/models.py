@@ -20,7 +20,7 @@ class Traveller(models.Model):
     secret = models.CharField(max_length=120, unique=True)
     email = models.EmailField(blank=True, unique=True)
 
-    photo = models.FileField(upload_to='user_photos', blank=True)
+    photo = models.ImageField(upload_to='user_photos', blank=True)
     home_contact_email = models.EmailField(blank=True)
     home_contact_mobile = models.CharField(max_length=20, blank=True)
 

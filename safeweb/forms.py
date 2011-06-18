@@ -25,3 +25,22 @@ class TravellerForm(forms.ModelForm):
         except Traveller.DoesNotExist:
             pass # the secret is unique: success
         return secret
+
+class SecretFormField(forms.Field):
+    def clean(self, value):
+        value = super(SecretFormField, self).clean(value)
+        if len(value) < MIN_SCRT_LENGTH:
+            raise forms.ValidationError('The secret must be at least 10 characters')
+        try:
+            processed_value = process_secret(value)
+            traveller = Traveller.objects.get(secret=processed_value)
+        except Traveller.DoesNotExist:
+            raise forms.ValidationError('Sorry, that secret is not recognized')
+        return processed_value
+
+class HelpForm(forms.Form):
+     # country = CountryField
+    help_secret = SecretFormField()
+
+class SafeForm(forms.Form):
+    safe_secret = SecretFormField()

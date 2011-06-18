@@ -3,11 +3,11 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
-from forms import TravellerForm, process_secret
+from forms import TravellerForm, process_secret, SafeForm, HelpForm
 
 def register(request):
     if request.method == "POST":
-        traveller_form = TravellerForm(data=request.POST)
+        traveller_form = TravellerForm(request.POST, request.FILES)
         if traveller_form.is_valid():
             # combine traveller's secret with site secret and hash before saving
             traveller = traveller_form.save(commit=False)
@@ -21,10 +21,24 @@ def register(request):
             context_instance=RequestContext(request))
 
 def update(request):
-    """
-    allow the user to change a subset of all their data
-    """
-    form = None
+    if request.method == "POST":
+        safe_form = SafeForm(data=request.POST)
+        help_form = HelpForm(data=request.POST)
+        if safe_form.is_valid():
+            processed_secret = safe_form.cleaned_data['safe_secret']
+            traveller = get_traveller(processed_secret)
+            traveller.status = STATUS_SAFE
+            traveller.save()
+            return HttpResponseRedirect(reverse('safe'))
+        if help_form.is_valid():
+            processed_secret = help_form.cleaned_data['help_secret']
+            traveller = get_traveller(processed_secret)
+
+            return HttpResponseRedirect(reverse('help'))
+    else:
+        safe_form = SafeForm()
+        help_form = HelpForm()
     return render_to_response('update.html',
-            {'form': form},
+            {'safe_form': safe_form,
+            'help_form': help_form},
             context_instance=RequestContext(request))

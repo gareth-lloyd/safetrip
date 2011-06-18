@@ -4,6 +4,21 @@
 <div id="update_form">
     <h3>Tell us how you are</h3>
 
-    {{ form.as_p }}
+    <div id="am_safe">
+        Tell us you're safe:
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ safe_form.as_p }}
+            <input type="submit" />
+        </form>
+    </div>
+    <div id="get_help">
+        Get help
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ help_form.as_p }}
+            <input type="submit" />
+        </form>
+    </div>
 </div>
 {% endblock %}
