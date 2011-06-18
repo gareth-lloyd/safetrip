@@ -4,11 +4,16 @@ from django.db.models.signals import post_save
 
 from safeweb.fields import CountryField
 
+STATUS_IN_TRANSIT = 0
+STATUS_IN_DANGER = 1
+STATUS_SAFE = 2
+
 STATUSES = (
-    (0, 'In Transit'),
-    (1, 'In Danger'),
-    (2, 'Safe'),
+    (STATUS_IN_TRANSIT, 'In Transit'),
+    (STATUS_IN_DANGER, 'In Danger'),
+    (STATUS_SAFE, 'Safe'),
 )
+
 
 class Traveller(models.Model):
     name = models.CharField(max_length=120)
