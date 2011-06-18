@@ -35,3 +35,6 @@ class Traveller(models.Model):
     notes = models.TextField(null=True, blank=True)
     status = models.PositiveSmallIntegerField(choices=STATUSES, 
         default=0)
+
+    help_country = CountryField(blank=True)
+    help_message = models.TextField(blank=True)
