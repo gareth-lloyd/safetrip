@@ -40,7 +40,43 @@
 
     <div>No one is in danger in {{ country }} </div>
 {% endif %}
+<br />
+<br />
+<br />
+<br />
 
+<h3>People who should have updated us by now </h3>
+{% if expired_updates %}
+<table>
+
+    <tr><th>Photo</th><th>Name</th><th>Last report</th><th>Date</th><th>Home Country</th> </tr>
+    {% for update in expired_updates %}
+    <tr>
+        <td>
+            <img src="/media/{{ update.traveller.photo.url }}" />
+        </td>
+        <td>
+            {{ update.traveller.name }}
+        </td>
+        <td>
+            {{ update.update }}
+        </td>
+        <td>
+            {{ update.updated }}
+        </td>
+        <td>
+            {{ update.traveller.home_country }}
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% else %}
+
+    <div>No one has disappeared in {{ country }} </div>
+{% endif %}
+<br />
+<br />
 <br />
 <br />
 

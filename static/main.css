@@ -145,11 +145,11 @@ form textarea {
 
 .msg {float: left; width: 100%; margin: 10px;}
 
-.msg h2 {float: left; margin-bottom:50px;}
+.msg h2 {margin-bottom:50px;}
 
-.msg p {float: left; clear:both; margin-left:200px;}
+.msg p {clear:both; }
+.msg ul {margin-left: 20px}
 
-.msg #help_message {float: left; clear:both; margin-left:200px;}
 
 /* info */
 
@@ -329,4 +329,7 @@ background: url(../static/images/stoptraffik.jpg) no-repeat bottom right;
 
 .feature4d {
 background: url(../static/images/freedom.jpg) no-repeat bottom right;
+}
+.errorlist {
+    color: red;
 }
