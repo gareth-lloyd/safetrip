@@ -42,16 +42,17 @@ def register(request):
             context_instance=RequestContext(request))
 
 def help(request, traveller_id=None, country=None):
-    traveller = get_object_or_404(Traveller, pk=traveller_id)
+    traveller = get_object_or_404(Traveller, pk=int(traveller_id))
     if not country:
         try:
             latest_update = TravellerUpdate.objects.filter(traveller=traveller).order_by('-updated')[0]
             country = latest_update.current_country
         except IndexError:
             country = traveller.destination_country
-    # get latest update country, falling back to traveller's destination
+
+    help = HelpDetails.objects.get(pk=country)
     return render_to_response('help.html', {'traveller': traveller,
-                'country': country},
+                'country': country, 'help_message': help.web_text},
                 context_instance=RequestContext(request))
 
 def update(request):
@@ -67,7 +68,7 @@ def update(request):
                 current_country=data['country'],
                 update=data['help_message'])
             do_help_actions(traveller)
-            kwargs = {'traveller_id': traveller.id}
+            kwargs = {'traveller_id': str(traveller.id)}
             url_name = 'help'
             if data['country']:
                 url_name = 'help-country'
