@@ -11,16 +11,20 @@ DONE
 - poll bluevia API for received text mesages
 - parse received text messages for HELP/SAFE verb, password, and messages
 - process secret before storing
+- create web endpoints for SAFE/HELP
+- create web endpoints for SAFE/HELP
 
 DOING
-- create web endpoints for SAFE/HELP
-- different short codes for different countries
-- admin interface for seeing people in trouble
-
-TODO
-- create method for updating on progress
-    - multiple updates per person. create web interface and then ask Tom to duplicate with mobile
+- sort out data structures
+- refactor scripts to use general safe/help functions
+- generate secrets
 - create local information class and fixture to populate
+
+- admin interface for seeing people in trouble
+- different short codes for different countries
+- create method for updating on progress
+    - multiple updates per person. create web interface and 
+      then ask Tom to duplicate with mobile
 - show short codes on website
 - script to perform actions for a person in trouble
     - forward details to relevant people

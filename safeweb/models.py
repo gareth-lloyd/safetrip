@@ -14,8 +14,8 @@ STATUSES = (
     (STATUS_SAFE, 'Safe'),
 )
 
-
 class Traveller(models.Model):
+    created = models.DateField(auto_now_add=True)
     name = models.CharField(max_length=120)
     secret = models.CharField(max_length=120, unique=True)
     email = models.EmailField(blank=True, unique=True)
@@ -29,7 +29,6 @@ class Traveller(models.Model):
     destination_country = CountryField()
     destination_details = models.CharField(max_length=25, blank=True)
 
-    leaving = models.DateField()
     arriving = models.DateField()
 
     notes = models.TextField(null=True, blank=True)
@@ -38,3 +37,13 @@ class Traveller(models.Model):
 
     help_country = CountryField(blank=True)
     help_message = models.TextField(blank=True)
+
+class TravellerUpdate(models.Model):
+    updated = models.DateField(auto_now_add=True)
+    traveller = models.ForeignKey(Traveller)
+    current_country = CountryField()
+    update = models.TextField(null=True, blank=True)
+
+class HelpDetails(models.Model):
+    country = CountryField(primary_key=True)
+    help_text = models.TextField()

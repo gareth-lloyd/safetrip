@@ -9,7 +9,7 @@
         time. However, if you run into trouble...
     </div>
 
-    <form method="POST" action="">
+    <form enctype="multipart/form-data" method="post" action="">
         {% csrf_token %}
         {{ traveller_form.as_p }}
         <input type="submit" />
