@@ -1,41 +1,14 @@
-DONE
-- reg form (web)
-    - coming from
-    - going to
-    - family details
-    - photo
-    - home country phone
-    - leaving
-    - arriving (calculated - hints to user)
-- confirmation page with details (web)
-- poll bluevia API for received text mesages
-- parse received text messages for HELP/SAFE verb, password, and messages
-- process secret before storing
-- create web endpoints for SAFE/HELP
-- create web endpoints for SAFE/HELP
-- generate secrets
-- sort out data structures
-- create local information class and fixture to populate
-
-DOING
-- refactor scripts to use general safe/help functions
-- admin interface for seeing people in trouble
-- different short codes for different countries
-- sort out help txt on form fields
-
-- create method for updating on progress
-    - multiple updates per person. create web interface and 
-      then ask Tom to duplicate with mobile
-
-- show short codes on website
+- input the country help details
+- design post-help template
+- admin interface for seeing people in trouble in a particular trouble
+- updates via text message
 - script to perform actions for a person in trouble
     - forward details to relevant people
 - reply to HELP txt with as much information as possible of use in location
 
 
-nice to have
-- registration via SMS
-- registration with picture via MMS
-- notify family via email
-    - after HELP report
-    - forward custom messages to family members
+
+Mention in talk:
+- updates to family members
+- different short codes for different countries
+- alerts for charities

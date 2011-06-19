@@ -40,6 +40,11 @@ body {height: 100%; background:#f7f7f7 none repeat scroll 0 0; color:#282828; fo
     margin:0;
     width: 200px;
 }
+
+#header .header-content .logo h1 a {
+	color:#FFF;
+}
+
 #header .header-content .logo h2 {
 	float:left;
 	clear: both;
@@ -120,6 +125,23 @@ form input[type="submit"] {
 	float: left;
 	margin: 10px 0 0 350px;	
 }
+
+form select {
+	float: left;
+}
+
+form textarea {
+	float: left;
+}
+
+/* */
+
+.upate_form_container {float:left; width: 100%; clear:both;}
+
+.upate_form_container h4 {margin-top: 10px; line-height:30px; border-bottom: 1px solid #333333; border-top: 1px solid #333333; padding:0 10px 0 10px; background-color: #f7f7f7; font-size: 16px;}
+
+.upate_form_container form {float:left; margin-top:5px; margin-bottom:10px;}
+.upate_form_container form span.helptext {font-size: 12px;}
 
 /* --------------- banner ------------------ */
 
@@ -273,10 +295,4 @@ background: url(../static/images/stoptraffik.jpg) no-repeat bottom right;
 
 .feature4d {
 background: url(../static/images/freedom.jpg) no-repeat bottom right;
-}
-
-
-.update_form_container {
-    clear: both;
-    padding-top: 30px;
 }

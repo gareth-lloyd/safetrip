@@ -60,7 +60,7 @@ class UpdateForm(forms.Form):
                               required=False, widget=forms.Textarea)
     update_secret = SecretFormField(required=False)
 
-    def clean_help_secret(self):
+    def clean_update_secret(self):
         return _clean_secret(self, 'update_secret')
 
 class SafeForm(forms.Form):
