@@ -274,3 +274,9 @@ background: url(../static/images/stoptraffik.jpg) no-repeat bottom right;
 .feature4d {
 background: url(../static/images/freedom.jpg) no-repeat bottom right;
 }
+
+
+.update_form_container {
+    clear: both;
+    padding-top: 30px;
+}

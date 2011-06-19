@@ -6,7 +6,7 @@ import blueviamonitor.monitor as monitor
 setup_environ(settings)
 
 from safeweb.forms import process_secret
-from safeweb.models import Traveller, STATUS_SAFE, STATUS_IN_DANGER
+from safeweb.models import Traveller, TravellerUpdate, STATUS_SAFE, STATUS_IN_DANGER
 from scripts import do_safe_actions, do_help_actions
 
 if len(sys.argv) < 3:
@@ -15,7 +15,7 @@ if len(sys.argv) < 3:
 country_code = sys.argv[1]
 short_code = sys.argv[2]
 
-def update_traveller_for_secret(status, secret, help_country=None, help_message=None):
+def update_traveller_for_secret(status, secret, help_country=None, help_message=None, phone_number=None):
     processed_secret = process_secret(secret)
     try:
         traveller = Traveller.objects.get(secret=processed_secret)
@@ -23,10 +23,10 @@ def update_traveller_for_secret(status, secret, help_country=None, help_message=
             current_country=help_country, update=help_message,
             status=status)
         update.save()
-        if status = STATUS_SAFE:
-            do_safe_actions(traveller)
-        if status = STATUS_IN_DANGER:
-            do_help_actions(traveller)
+        if status == STATUS_SAFE:
+            do_safe_actions(traveller, phone_number)
+        if status == STATUS_IN_DANGER:
+            do_help_actions(traveller, phone_number)
 
     except Traveller.DoesNotExist:
         print "could not find traveller " + processed_secret
@@ -42,11 +42,12 @@ def handle_sms(sms):
             if len(message_split) >= 3:
                 message = ' '.join(message_split[3:])
 
-            update_traveller_for_secret(STATUS_IN_DANGER, secret, country_code, message)
+            update_traveller_for_secret(STATUS_IN_DANGER, secret, country_code, message, sms['originAddress']['phoneNumber'])
             print "User with secret " + secret + " is in trouble"
         else:
             secret = message_split[1]
-            update_traveller_for_secret(STATUS_SAFE, secret)
+            update_traveller_for_secret(STATUS_SAFE, secret, None, None, sms['originAddress']['phoneNumber'])
+            
             print "User with secret " + secret + " is safe"
     else:
         print "invalid message " + message
