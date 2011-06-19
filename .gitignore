@@ -2,4 +2,3 @@
 *.kpf
 local_settings.py
 *.swp
-media/user_photos/*

@@ -38,6 +38,9 @@ class Traveller(models.Model):
     help_country = CountryField(blank=True)
     help_message = models.TextField(blank=True)
 
+    def __unicode__(self):
+        return self.name
+
 class TravellerUpdate(models.Model):
     updated = models.DateField(auto_now_add=True)
     traveller = models.ForeignKey(Traveller)
@@ -46,4 +49,5 @@ class TravellerUpdate(models.Model):
 
 class HelpDetails(models.Model):
     country = CountryField(primary_key=True)
-    help_text = models.TextField()
+    web_text = models.TextField()
+    sms_text = models.TextField()

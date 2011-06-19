@@ -35,8 +35,18 @@ def register(request):
             {'traveller_form': traveller_form},
             context_instance=RequestContext(request))
 
-def help(request, traveller_id=None):
+def help(request, traveller_id=None, country=None):
     traveller = get_object_or_404(Traveller, pk=traveller_id)
+    if not country:
+        try:
+            latest_update = TravellerUpdate.objects.filter(traveller=traveller).order_by('-updated')[0]
+            country = latest_update.current_country
+        except IndexError:
+            country = traveller.destination_country
+    # get latest update country, falling back to traveller's destination
+    return render_to_response('help.html', {'traveller': traveller,
+                'country': country},
+                context_instance=RequestContext(request))
 
 def update(request):
     if request.method == "POST":
@@ -47,8 +57,13 @@ def update(request):
             traveller.status = STATUS_IN_DANGER
             traveller.save()
             do_help_actions(traveller)
-            return HttpResponseRedirect(reverse('help', 
-                    kwargs={'traveller_id': traveller.id}))
+            kwargs = {'traveller_id': traveller.id}
+            url_name = 'help'
+            if help_form.cleaned_data['country']:
+                url_name = 'help-country'
+                kwargs['country'] = help_form.cleaned_data['country']
+            return HttpResponseRedirect(reverse(url_name,
+                    kwargs=kwargs))
         if safe_form.is_valid():
             traveller = safe_form.cleaned_data['traveller']
             traveller.status = STATUS_SAFE

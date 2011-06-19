@@ -1,0 +1,62 @@
+[
+    {
+        "pk": 1, 
+        "model": "safeweb.travellerupdate", 
+        "fields": {
+            "updated": "2011-06-19", 
+            "current_country": "AO", 
+            "traveller": 1, 
+            "update": "I don't know what's happening, I'm scared."
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "safeweb.travellerupdate", 
+        "fields": {
+            "updated": "2011-06-19", 
+            "current_country": "AI", 
+            "traveller": 1, 
+            "update": ""
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "safeweb.travellerupdate", 
+        "fields": {
+            "updated": "2011-06-19", 
+            "current_country": "TD", 
+            "traveller": 4, 
+            "update": "We are in a truck. I don't know exactly where. "
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "safeweb.travellerupdate", 
+        "fields": {
+            "updated": "2011-06-19", 
+            "current_country": "BE", 
+            "traveller": 4, 
+            "update": "I have left the others. I will stay here. "
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "safeweb.travellerupdate", 
+        "fields": {
+            "updated": "2011-06-19", 
+            "current_country": "MX", 
+            "traveller": 2, 
+            "update": "I am near hte border, I think. "
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "safeweb.travellerupdate", 
+        "fields": {
+            "updated": "2011-06-19", 
+            "current_country": "MX", 
+            "traveller": 3, 
+            "update": "This is not fun."
+        }
+    }
+]
