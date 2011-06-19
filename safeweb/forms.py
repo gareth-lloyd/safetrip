@@ -6,7 +6,7 @@ from safeweb.fields import COUNTRIES
 from django.conf import settings
 
 def process_secret(raw_secret):
-    secret = raw_secret + settings.SECRET_KEY
+    secret = raw_secret.lower() + settings.SECRET_KEY
     return hashlib.sha256(secret).hexdigest()
 
 MIN_SCRT_LENGTH = 10
@@ -47,10 +47,19 @@ def _clean_secret(form_instance, name):
 
 class HelpForm(forms.Form):
     country = CountryField(label="Where are you?", required=False)
+    help_message = forms.CharField(required=False, widget=forms.Textarea)
     help_secret = SecretFormField(required=False)
 
     def clean_help_secret(self):
         return _clean_secret(self, 'help_secret')
+
+class UpdateForm(forms.Form):
+    country = CountryField(label="Where are you?", required=False)
+    message = forms.CharField(required=False, widget=forms.Textarea)
+    update_secret = SecretFormField(required=False)
+
+    def clean_help_secret(self):
+        return _clean_secret(self, 'update_secret')
 
 class SafeForm(forms.Form):
     safe_secret = SecretFormField(required=False)

@@ -32,11 +32,14 @@ class Traveller(models.Model):
     arriving = models.DateField()
 
     notes = models.TextField(null=True, blank=True)
-    status = models.PositiveSmallIntegerField(choices=STATUSES, 
-        default=0)
 
-    help_country = CountryField(blank=True)
-    help_message = models.TextField(blank=True)
+    def _get_current_status(self):
+        try:
+            return self.travellerupdate_set.order_by('-updated')[0].status
+        except IndexError:
+            return STATUS_IN_TRANSIT #default
+
+    status = property(_get_current_status)
 
     def __unicode__(self):
         return self.name
@@ -46,6 +49,7 @@ class TravellerUpdate(models.Model):
     traveller = models.ForeignKey(Traveller)
     current_country = CountryField()
     update = models.TextField(null=True, blank=True)
+    status = models.PositiveSmallIntegerField(choices=STATUSES, default=0)
 
 class HelpDetails(models.Model):
     country = CountryField(primary_key=True)
