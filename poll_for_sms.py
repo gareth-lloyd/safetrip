@@ -7,6 +7,7 @@ setup_environ(settings)
 
 from safeweb.forms import process_secret
 from safeweb.models import Traveller, STATUS_SAFE, STATUS_IN_DANGER
+from scripts import do_safe_actions, do_help_actions
 
 if len(sys.argv) < 3:
     print "Usage eg: python poll_for_sms.py GB 445480605"
@@ -18,21 +19,20 @@ def update_traveller_for_secret(status, secret, help_country=None, help_message=
     processed_secret = process_secret(secret)
     try:
         traveller = Traveller.objects.get(secret=processed_secret)
-        traveller.status = status
+        update = TravellerUpdate(traveller=traveller,
+            current_country=help_country, update=help_message,
+            status=status)
+        update.save()
+        if status = STATUS_SAFE:
+            do_safe_actions(traveller)
+        if status = STATUS_IN_DANGER:
+            do_help_actions(traveller)
 
-        if help_country != None:
-            traveller.help_country = help_country
-
-        if help_message != None:
-            traveller.help_message = help_message
-
-        traveller.save()
     except Traveller.DoesNotExist:
         print "could not find traveller " + processed_secret
 
 def handle_sms(sms):
     message_split = sms['message'].split()
-    
     if len(message_split) >= 2:
         should_be_HELP_or_pass = message_split[1]
         if should_be_HELP_or_pass.lower() == "help":
