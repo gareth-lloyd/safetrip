@@ -2,9 +2,9 @@ import oauth2 as oauth
 import time
 import httplib
 import httplib2
+import json
 
-
-oauth_token = oauth.Token("e0361b2ed52754ae957de9a580be8e3c", "fe590ff6aaab1c3c14bad09e57b44433")
+oauth_token = oauth.Token(key="356810265a6b0a02c85ab718bffa2de1", secret="8cc028d29aa7bfaedc8198a1da0e41df")
 oauth_consumer = oauth.Consumer(key='sY11061817851719',secret='GgYe63682680')
 
 
@@ -24,26 +24,27 @@ def get_sms_json(short_code):
     return  resp.read()
 
 
-# Does not work
-def post_sms_json():
-    oauth_request = oauth.Request.from_consumer_and_token(
-        oauth_consumer, token=oauth_token, http_url=sms_url, parameters={},
-    )
-    oauth_request.sign_request(oauth.SignatureMethod_HMAC_SHA1(), oauth_consumer, oauth_token)
+def post_sms(phone_number, text):
+    body = {"smsText": {
+                "address":          {"phoneNumber":phone_number},
+                "message":          text,
+                "originAddress":    {"alias": oauth_token.key}, # Sends from this token's mobile number setup in account
+                },
+            }
 
-    message = '{"smsText": {"address": {"phoneNumber": "445480605"},"message": "SANDMYKEYWORD This is a fake text message","originAddress": {"alias": "4bf499a1ecaac050dfaddfef87f99e3a"}}}'
+    request         = oauth.Request.from_consumer_and_token(oauth_consumer, oauth_token, "POST", "https://api.bluevia.com/services/REST/SMS/outbound/requests?version=v1")
+    request.sign_request(oauth.SignatureMethod_HMAC_SHA1(), oauth_consumer, oauth_token)
 
-    webservice = httplib.HTTPS("api.bluevia.com")
-    webservice.putrequest("POST", "/services/REST/SMS_Sandbox/outbound/requests?version=v1")
-    webservice.putheader("Host", "api.bluevia.com")
-    webservice.putheader("Content-type", "application/json")
-    webservice.putheader("Content-length", "%d" % len(message))
-    oauth_headers = oauth_request.to_header("https://api.bluevia.com")
-    webservice.putheader("Authorization", oauth_headers['Authorization'])
-    webservice.endheaders()
+    body = json.dumps(body)
+    connection = httplib.HTTPSConnection("api.bluevia.com")
 
-    print "Sending " + oauth_headers['Authorization']
-    webservice.send(message)
+    headers = request.to_header(realm="https://api.bluevia.com")
 
-    statuscode, statusmessage, header = webservice.getreply()
-    print "Response: ", statuscode, statusmessage, header
+    headers.update({'Content-Type': 'application/json'});
+
+    connection.request("POST", "https://api.bluevia.com/services/REST/SMS/outbound/requests?version=v1",headers=headers, body=body)
+
+    resp = connection.getresponse()
+    data = resp.read()
+
+    print data, resp.status, resp.reason

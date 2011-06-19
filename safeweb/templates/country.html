@@ -1,0 +1,113 @@
+{% extends 'contentbase.html' %}
+
+
+{% block extrahead %}
+<link href="/static/country_summary.css" rel="stylesheet" />
+
+{% endblock %}
+
+{% block content %}
+
+<h2>Country update for {{ country }}</h2>
+
+<h3>People in Danger</h3>
+{% if danger_updates %}
+<table>
+
+    <tr><th>Photo</th><th>Name</th><th>Last report</th><th>Date</th><th>Home Country</th> </tr>
+    {% for update in danger_updates %}
+    <tr>
+        <td>
+            <img src="/media/{{ update.traveller.photo.url }}" />
+        </td>
+        <td>
+            {{ update.traveller.name }}
+        </td>
+        <td>
+            {{ update.update }}
+        </td>
+        <td>
+            {{ update.updated }}
+        </td>
+        <td>
+            {{ update.traveller.home_country }}
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% else %}
+
+    <div>No one is in danger in {{ country }} </div>
+{% endif %}
+<br />
+<br />
+<br />
+<br />
+
+<h3>People who should have updated us by now </h3>
+{% if expired_updates %}
+<table>
+
+    <tr><th>Photo</th><th>Name</th><th>Last report</th><th>Date</th><th>Home Country</th> </tr>
+    {% for update in expired_updates %}
+    <tr>
+        <td>
+            <img src="/media/{{ update.traveller.photo.url }}" />
+        </td>
+        <td>
+            {{ update.traveller.name }}
+        </td>
+        <td>
+            {{ update.update }}
+        </td>
+        <td>
+            {{ update.updated }}
+        </td>
+        <td>
+            {{ update.traveller.home_country }}
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% else %}
+
+    <div>No one has disappeared in {{ country }} </div>
+{% endif %}
+<br />
+<br />
+<br />
+<br />
+
+<h3>People in transit {{ country }}</h3>
+{% if transit_updates %}
+<table>
+
+    <tr><th>Photo</th><th>Name</th><th>Last report</th><th>Date</th><th>Home Country</th> </tr>
+    {% for update in transit_updates %}
+    <tr>
+        <td>
+            <img src="/media/{{ update.traveller.photo.url }}" />
+        </td>
+        <td>
+            {{ update.traveller.name }}
+        </td>
+        <td>
+            {{ update.update }}
+        </td>
+        <td>
+            {{ update.updated }}
+        </td>
+        <td>
+            {{ update.traveller.home_country }}
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% else %}
+
+    <div>No one is in transit in {{ country }} </div>
+{% endif %}
+{% endblock %}

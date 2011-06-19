@@ -1,10 +1,12 @@
 from django.shortcuts import render_to_response, get_object_or_404
+from datetime import date
+from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
 from forms import TravellerForm, process_secret, SafeForm, HelpForm, UpdateForm
-from models import (Traveller, TravellerUpdate, HelpDetails, 
+from models import (Traveller, TravellerUpdate, HelpDetails,
         STATUS_SAFE, STATUS_IN_DANGER, STATUS_IN_TRANSIT)
 from safetrip.scripts import do_safe_actions, do_help_actions, do_update_actions
 from safeweb.unique import get_name
@@ -17,6 +19,18 @@ def _get_unique_secret():
         return attempt
     return _get_unique_secret()
 
+@login_required
+def country_summary(request, country=''):
+    danger_updates = TravellerUpdate.objects.filter(current_country=country, status=1)
+    today = date.today()
+    transit_updates = TravellerUpdate.objects.filter(current_country=country, status=0, 
+                                                     traveller__arriving__gt=today)
+    expired_updates = TravellerUpdate.objects.filter(current_country=country, status=0, 
+                                                     traveller__arriving__lte=today)
+    safe_updates = TravellerUpdate.objects.filter(current_country=country, status=2)
+    return render_to_response('country.html', locals(),
+                              context_instance=RequestContext(request))
+
 def register(request):
     if request.method == "POST":
         traveller_form = TravellerForm(request.POST, request.FILES)
@@ -28,8 +42,8 @@ def register(request):
             traveller.secret = store_secret
             traveller.save()
 
-            initial_update = TravellerUpdate(traveller=traveller, 
-                        status=STATUS_IN_TRANSIT, 
+            initial_update = TravellerUpdate(traveller=traveller,
+                        status=STATUS_IN_TRANSIT,
                         current_country=traveller.home_country)
             initial_update.save()
             return render_to_response('confirm.html',
@@ -64,7 +78,7 @@ def update(request):
             data = help_form.cleaned_data
             traveller = data['traveller']
             update = TravellerUpdate(traveller=traveller,
-                status=STATUS_IN_DANGER, 
+                status=STATUS_IN_DANGER,
                 current_country=data['country'],
                 update=data['help_message'])
             do_help_actions(traveller)

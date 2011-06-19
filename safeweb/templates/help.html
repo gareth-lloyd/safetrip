@@ -5,8 +5,14 @@
 <div class="msg">
 	<h2>We're trying to help you</h2>
 	
-	<div id="help_message">
-	    {{ help_message }}
-	</div>
+    <p>
+        We have passed your details on to organizations in {{ country }} that can help you. 
+        </p>
+        <p>They will try to contact you and offer you further assistance. 
+    </p>
+    <p>
+        Contact any of these organizations for additional help. 
+	    {{ help_message|safe }}
+	</p>
 </div>
 {% endblock %}
