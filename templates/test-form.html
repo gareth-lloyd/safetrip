@@ -1,9 +1,17 @@
 
 <html> 
-<head> 
-  <link href="../static/main.css" rel="stylesheet"> 
+<head>
+
+  <script src="../static/js/jquery-1.6.1.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../static/js/jquery-ui-1.8.13.custom.min.js" type="text/javascript" charset="utf-8"></script>
+
   <link href='http://fonts.googleapis.com/css?family=Limelight&v1' rel='stylesheet' type='text/css'> 
   <link href='http://fonts.googleapis.com/css?family=La+Belle+Aurore&v1' rel='stylesheet' type='text/css'> 
+  
+  <link href='../static/css/jquery-ui-1.8.13.custom.css' rel='stylesheet' type='text/css'> 
+
+  <link href="../static/main.css" rel="stylesheet"> 
+  
 </head> 
 <body> 
   <div id="header"> 
@@ -545,5 +553,13 @@
   <div id="footer"> 
     <p>&#169SafeTrip</p> 
   </div> 
-</body> 
+</body>
+
+<script>
+$(function() {
+	$( "#id_leaving" ).datepicker({dateFormat:'yy/mm/dd'});
+	$( "#id_arriving" ).datepicker({dateFormat:'yy/mm/dd'});
+});
+</script>
+
 </html> 
