@@ -10,4 +10,5 @@ urlpatterns = patterns('safeweb.views',
     url(r'^updated/$', direct_to_template, {'template': 'updated.html'}, name='updated'),
     url(r'^help/(?P<traveller_id>\d+)/$', 'help', {'country': None}, name='help'),
     url(r'^help/(?P<traveller_id>\d+)/(?P<country>\w\w)/$', 'help', name='help-country'),
+    url(r'^country/(?P<country>\w\w)/$', 'country_summary', name='country-summary'),
 )

@@ -1,0 +1,34 @@
+[
+    {
+        "pk": "DE", 
+        "model": "safeweb.helpdetails", 
+        "fields": {
+            "web_text": "<ul>\r\n<li>KOK - German nationwide activist coordination group combating trafficking in women and violence against women in the process of migration +49 30 263 911 76\r\n</li>\r\n</ul>", 
+            "sms_text": "Call 49 30 263 911 76 for help.\r\n"
+        }
+    }, 
+    {
+        "pk": "FR", 
+        "model": "safeweb.helpdetails", 
+        "fields": {
+            "web_text": "<ul>\r\n<li>\r\nCall 0 825 009 907: National Coordination for protection of victims of human trafficking hotline\r\n</li>\r\n</ul>", 
+            "sms_text": "Call 0 825 009 907: National Coordination for protection of victims of human trafficking hotline"
+        }
+    }, 
+    {
+        "pk": "GB", 
+        "model": "safeweb.helpdetails", 
+        "fields": {
+            "web_text": "<ul>\r\n<li>Call free on 0800 555 111 anytime for help for victims of human trafficking. \r\n</li>\r\n</ul>", 
+            "sms_text": "In the UK, call 0800 555 111 anytime for help."
+        }
+    }, 
+    {
+        "pk": "IT", 
+        "model": "safeweb.helpdetails", 
+        "fields": {
+            "web_text": "<ul>\r\n<li>Italy: National hotline against trafficking 800 290 290\r\n</li>\r\n</ul>", 
+            "sms_text": "Italy: National hotline against trafficking 800 290 290\r\n"
+        }
+    }
+]
