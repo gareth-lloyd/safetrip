@@ -3,3 +3,6 @@ def do_safe_actions(traveller):
 
 def do_help_actions(traveller):
     pass
+
+def do_update_actions(traveller):
+    pass
