@@ -12,6 +12,8 @@ def get_received_sms(short_code):
         return []
     sms_object = json.loads(sms_json)
 
+    print sms_object
+
     # Shitty json response is an object instead of an array if there's only one
     if type(sms_object['receivedSMS']['receivedSMS']) != list:
         return [sms_object['receivedSMS']['receivedSMS']]
