@@ -7,7 +7,7 @@ urlpatterns = patterns('safeweb.views',
     url(r'^confirm/$', direct_to_template, 
             {'template': 'confirm.html'}, name='confirm'),
     url(r'^safe/$', direct_to_template, {'template': 'safe.html'}, name='safe'),
-    url(r'^updated/$', direct_to_template, {'template': 'updated.html'}, name='safe'),
+    url(r'^updated/$', direct_to_template, {'template': 'updated.html'}, name='updated'),
     url(r'^help/(?P<traveller_id>\d+)/$', 'help', {'country': None}, name='help'),
     url(r'^help/(?P<traveller_id>\d+)/(?P<country>\w\w)/$', 'help', name='help-country'),
 )

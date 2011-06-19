@@ -87,9 +87,9 @@ def update(request):
             traveller = data['traveller']
             update = TravellerUpdate(traveller=traveller,
                         status=STATUS_IN_TRANSIT, update=data['message'],
-                        country=data['country'])
+                        current_country=data['country'])
             do_update_actions(traveller)
-            return HttpResponseRedirect(reverse('update'))
+            return HttpResponseRedirect(reverse('updated'))
     else:
         safe_form = SafeForm()
         help_form = HelpForm()
