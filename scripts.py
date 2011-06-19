@@ -10,4 +10,4 @@ def do_help_actions(traveller, phone_number=None):
 
 def do_update_actions(traveller, phone_number=None):
     if phone_number:
-        send_sms.send(phone_number, "Thanks fo sharing")
+        send_sms.send(phone_number, "Thanks for sharing")
