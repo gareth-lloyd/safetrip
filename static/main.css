@@ -151,6 +151,32 @@ form textarea {
 
 .msg #help_message {float: left; clear:both; margin-left:200px;}
 
+/* info */
+
+.info {min-height: 100%; height: auto !important; height: 100%; background:#f7f7f7 none repeat scroll 0 0; margin:20px auto; padding:0 30px; width:990px; min-height:100%; padding-bottom:40px;   /* Height of the footer */}
+
+.info .info-content {
+	background-color:#FFFFFF; width:930px; padding: 15px; margin-left:15px; float:left; position:relative; min-height:500px;
+}
+
+.info .info-content h1 {
+	font-size: 32px;
+	font-family:'Limelight', arial, serif;	
+}
+
+.info .info-content b {
+	color:#eb008b;
+}
+
+.info .info-content h2 {
+	font-size: 24px;
+	font-family:'Limelight', arial, serif;	
+}
+
+.info .info-content img {
+	
+}
+
 /* --------------- banner ------------------ */
 
 #banner_wrap {
