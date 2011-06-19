@@ -5,7 +5,7 @@ import json
 
 POLL_WAIT=30
 
-oauth_token = oauth.Token("e0361b2ed52754ae957de9a580be8e3c", "fe590ff6aaab1c3c14bad09e57b44433")
+oauth_token = oauth.Token(key="356810265a6b0a02c85ab718bffa2de1", secret="8cc028d29aa7bfaedc8198a1da0e41df")
 oauth_consumer = oauth.Consumer(key='sY11061817851719',secret='GgYe63682680')
 
 sms_url = "https://api.bluevia.com/services/REST/SMS_Sandbox/inbound/445480605/messages?version=v1&alt=json"
