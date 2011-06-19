@@ -1,0 +1,54 @@
+
+<html> 
+<head>
+
+  <script src="../static/js/jquery-1.6.1.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../static/js/jquery-ui-1.8.13.custom.min.js" type="text/javascript" charset="utf-8"></script>
+
+  <link href='http://fonts.googleapis.com/css?family=Limelight&v1' rel='stylesheet' type='text/css'> 
+  <link href='http://fonts.googleapis.com/css?family=La+Belle+Aurore&v1' rel='stylesheet' type='text/css'> 
+  
+  <link href='../static/css/jquery-ui-1.8.13.custom.css' rel='stylesheet' type='text/css'> 
+
+  <link href="../static/main.css" rel="stylesheet"> 
+  
+</head> 
+<body> 
+  <div id="header"> 
+    <div class="header-content"> 
+    	<div class="logo">
+	        <h1><a href="/">SafeTrip</a></h1> 
+	        <h2>We want you safe</h2> 
+        </div>
+        <div class="right-menu">
+	    	<span>Text</span><span class="pink">SAFETRIP</span><span>anonymously on</span><span class="pink">5480605</span>
+	    </div>
+    </div>    
+  </div>
+  
+<div id="main"> 
+  <div id="content"> 
+  
+  	<div class="msg">
+		<h2>We're trying to help you</h2>		
+		<div id="help_message">
+		    For local help, contact CRIMESTOPPERS anonymously on 0800 555 111.
+		</div>
+	</div>
+	 
+  </div>    
+</div> 
+ 
+  <div id="footer"> 
+    <p>&#169SafeTrip</p> 
+  </div> 
+</body>
+
+<script>
+$(function() {
+	$( "#id_leaving" ).datepicker({dateFormat:'yy/mm/dd'});
+	$( "#id_arriving" ).datepicker({dateFormat:'yy/mm/dd'});
+});
+</script>
+
+</html> 

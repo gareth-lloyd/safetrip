@@ -26,7 +26,7 @@ def update_traveller_for_secret(status, secret, help_country=None, help_message=
         if status == STATUS_SAFE:
             do_safe_actions(traveller, phone_number)
         if status == STATUS_IN_DANGER:
-            do_help_actions(traveller, phone_number)
+            do_help_actions(traveller, phone_number, help_country)
         if status == STATUS_IN_TRANSIT:
             do_update_actions(traveller, phone_number)
 
