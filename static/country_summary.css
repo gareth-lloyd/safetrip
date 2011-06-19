@@ -1,0 +1,11 @@
+td {
+    padding: 10px;
+    width: 18%;
+    vertical-align: center;
+    border: solid 1px gray;
+    border-width: 0 0 1px 0;
+}
+
+tr {
+}
+
