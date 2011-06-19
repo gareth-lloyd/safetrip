@@ -4,19 +4,29 @@
 <div id="update_form">
     <h3>Tell us how you are</h3>
 
-    <div id="am_safe">
-        Tell us you're safe:
+    <div id="get_help" class="upate_form_container">
+        <h4>Get help</h4>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ help_form.as_p }}
+            <input type="submit" />
+        </form>
+    </div>
+
+    <div id="am_safe" class="upate_form_container">
+        <h4>Tell us you're safe:</h4>
         <form action="" method="POST">
             {% csrf_token %}
             {{ safe_form.as_p }}
             <input type="submit" />
         </form>
     </div>
-    <div id="get_help">
-        Get help
+
+    <div id="update" class="upate_form_container">
+        <h4>Update your progress</h4>
         <form action="" method="POST">
             {% csrf_token %}
-            {{ help_form.as_p }}
+            {{ update_form.as_p }}
             <input type="submit" />
         </form>
     </div>

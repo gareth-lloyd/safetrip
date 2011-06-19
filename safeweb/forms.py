@@ -23,6 +23,7 @@ class TravellerForm(forms.ModelForm):
 class CountryField(forms.ChoiceField):
     def __init__(self, *args, **kwargs):
         kwargs.setdefault('choices', COUNTRIES)
+        kwargs.setdefault('help_text', 'Tell us where you are')
         super(CountryField, self).__init__(*args, **kwargs)
 
 class SecretFormField(forms.CharField):
@@ -46,8 +47,8 @@ def _clean_secret(form_instance, name):
     return data
 
 class HelpForm(forms.Form):
-    country = CountryField(label="Where are you?", required=False)
-    help_message = forms.CharField(required=False, widget=forms.Textarea)
+    country = CountryField(required=False)
+    help_message = forms.CharField(help_text='Tell us how you are', required=False, widget=forms.Textarea)
     help_secret = SecretFormField(required=False)
 
     def clean_help_secret(self):
@@ -55,7 +56,8 @@ class HelpForm(forms.Form):
 
 class UpdateForm(forms.Form):
     country = CountryField(label="Where are you?", required=False)
-    message = forms.CharField(required=False, widget=forms.Textarea)
+    message = forms.CharField(help_text="Tell us what's happening", 
+                              required=False, widget=forms.Textarea)
     update_secret = SecretFormField(required=False)
 
     def clean_help_secret(self):
