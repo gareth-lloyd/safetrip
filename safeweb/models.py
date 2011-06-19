@@ -18,7 +18,7 @@ class Traveller(models.Model):
     created = models.DateField(auto_now_add=True)
     name = models.CharField(max_length=120)
     secret = models.CharField(max_length=120, unique=True)
-    email = models.EmailField(blank=True, unique=True)
+    email = models.EmailField(blank=True, null=True)
 
     photo = models.ImageField(upload_to='user_photos', blank=True)
     home_contact_email = models.EmailField(blank=True)

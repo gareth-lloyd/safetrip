@@ -34,7 +34,7 @@ class SecretFormField(forms.CharField):
     def to_python(self, value):
         if value is None or len(value) < MIN_SCRT_LENGTH:
             raise forms.ValidationError('The secret must be at least 10 characters')
-        return process_secret(value)
+        return process_secret(value.lower())
 
 def _clean_secret(form_instance, name):
     data = form_instance.cleaned_data
