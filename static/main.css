@@ -134,14 +134,22 @@ form textarea {
 	float: left;
 }
 
-/* */
-
 .upate_form_container {float:left; width: 100%; clear:both;}
 
 .upate_form_container h4 {margin-top: 10px; line-height:30px; border-bottom: 1px solid #333333; border-top: 1px solid #333333; padding:0 10px 0 10px; background-color: #f7f7f7; font-size: 16px;}
 
 .upate_form_container form {float:left; margin-top:5px; margin-bottom:10px;}
 .upate_form_container form span.helptext {font-size: 12px;}
+
+/* msg */
+
+.msg {float: left; width: 100%; margin: 10px;}
+
+.msg h2 {float: left; margin-bottom:50px;}
+
+.msg p {float: left; clear:both; margin-left:200px;}
+
+.msg #help_message {float: left; clear:both; margin-left:200px;}
 
 /* --------------- banner ------------------ */
 
