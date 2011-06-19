@@ -47,7 +47,7 @@ class Traveller(models.Model):
 class TravellerUpdate(models.Model):
     updated = models.DateField(auto_now_add=True)
     traveller = models.ForeignKey(Traveller)
-    current_country = CountryField()
+    current_country = CountryField(null=True, blank=True)
     update = models.TextField(null=True, blank=True)
     status = models.PositiveSmallIntegerField(choices=STATUSES, default=0)
 

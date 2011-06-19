@@ -11,6 +11,8 @@ def send(to_number, message):
                'selectednums' : to_number,
                 'info' : 1 }
 
+    print "Sending to " + to_number
+
     data = urllib.urlencode(values)
     req = urllib2.Request(url, data)
     response = urllib2.urlopen(req)
