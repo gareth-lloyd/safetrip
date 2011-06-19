@@ -2,6 +2,7 @@ import sys
 from django.core.management import setup_environ
 import settings
 import blueviamonitor.monitor as monitor
+import txtlocalsms.send_sms as send_sms
 
 setup_environ(settings)
 
@@ -47,6 +48,8 @@ def handle_sms(sms):
         else:
             secret = message_split[1]
             update_traveller_for_secret(STATUS_SAFE, secret)
+            send_sms.send(sms['originAddress']['phoneNumber'], "Glad to hear you're safe")
+            
             print "User with secret " + secret + " is safe"
     else:
         print "invalid message " + message
