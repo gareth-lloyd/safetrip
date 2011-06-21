@@ -18,7 +18,9 @@
     {% for update in danger_updates %}
     <tr>
         <td>
+            {% if update.traveller.photo %}
             <img src="/media/{{ update.traveller.photo.url }}" />
+            {% endif %}
         </td>
         <td>
             {{ update.traveller.name }}

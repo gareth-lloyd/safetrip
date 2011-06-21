@@ -132,6 +132,7 @@ form select {
 
 form textarea {
 	float: left;
+    height: 40px;
 }
 
 .upate_form_container {float:left; width: 100%; clear:both;}

@@ -16,6 +16,7 @@ country_code = sys.argv[1]
 short_code = sys.argv[2]
 
 def update_traveller_for_secret(status, secret, help_country=None, help_message=None, phone_number=None):
+    print(secret)
     processed_secret = process_secret(secret)
     try:
         traveller = Traveller.objects.get(secret=processed_secret)
@@ -46,7 +47,7 @@ def handle_sms(sms):
 
             update_traveller_for_secret(STATUS_IN_DANGER, secret, country_code, message, sms['originAddress']['phoneNumber'])
             print "User with secret " + secret + " is in trouble"
-        if should_be_HELP_UPDATE_or_pass.lower() == "update":
+        elif should_be_HELP_UPDATE_or_pass.lower() == "update":
             secret = message_split[2]
 
             message = None
